@@ -1,0 +1,154 @@
+/**
+ * TokyoNight (Night) Clipboard theme for rofi
+ * Standalone, hard overrides to prevent white list rows.
+ */
+
+* {
+    font: "JetBrainsMono Nerd Font 12";
+
+    /* TokyoNight Night palette */
+    bg:       #1a1b26;
+    bg2:      #16161e;
+    surface:  #24283b;
+    surface2: #2f3549;
+
+    fg:       #c0caf5;
+    muted:    #565f89;
+
+    blue:     #7aa2f7;
+    purple:   #bb9af7;
+    cyan:     #7dcfff;
+    red:      #f7768e;
+
+    border:   #414868;
+
+    /* rofi common tokens */
+    background-color: @bg;
+    text-color: @fg;
+}
+
+window {
+    width: 520px;
+    location: center;
+    anchor: center;
+
+    background-color: @bg;
+    border: 2px;
+    border-color: @border;
+    border-radius: 12px;
+}
+
+mainbox {
+    padding: 10px;
+    background-color: transparent;
+}
+
+inputbar {
+    enabled: true;
+    padding: 10px;
+    spacing: 10px;
+
+    background-color: @surface;
+    border-radius: 10px;
+}
+
+prompt {
+    text-color: @muted;
+}
+
+entry {
+    background-color: transparent;
+    text-color: @fg;
+    placeholder: "Search clipboard...";
+    placeholder-color: @muted;
+}
+
+listview {
+    columns: 1;
+    lines: 8;
+    spacing: 6px;
+    margin: 0px;
+    padding: 8px 0px;
+    scrollbar: false;
+
+    background-color: transparent;
+}
+
+/* Each row container */
+element {
+    padding: 10px;
+    border-radius: 10px;
+    spacing: 10px;
+    orientation: horizontal;
+}
+
+/* Force icon/text rendering */
+element-icon {
+    size: 1.2em;
+    vertical-align: 0.5;
+}
+
+element-text {
+    vertical-align: 0.5;
+    text-color: inherit;
+}
+
+/***************
+ * HARD STATE OVERRIDES
+ * These are what stop the “white rows”.
+ ***************/
+
+/* Normal rows */
+element.normal.normal {
+    background-color: @surface;
+    text-color: @fg;
+}
+
+/* Alternate rows (if used) */
+element.alternate.normal {
+    background-color: @surface;
+    text-color: @fg;
+}
+
+/* Selected row */
+element.selected.normal {
+    background-color: @surface2;
+    text-color: @purple;
+}
+
+/* Active/hover row */
+element.normal.active {
+    background-color: @surface2;
+    text-color: @fg;
+}
+
+/* Selected + active */
+element.selected.active {
+    background-color: @surface2;
+    text-color: @purple;
+}
+
+/* Urgent (rare, but safe) */
+element.urgent.normal {
+    background-color: @surface;
+    text-color: @red;
+}
+
+element.urgent.active,
+element.urgent.selected {
+    background-color: @surface2;
+    text-color: @red;
+}
+
+/* Optional: make the “index”/extra info dimmer if your script uses it */
+element-text {
+    color: @fg;
+}
+
+element.normal.normal element-text {
+    color: @fg;
+}
+
+element.selected.normal element-text {
+    color: @purple;
+}

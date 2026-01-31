@@ -10,11 +10,11 @@ if ! command -v cliphist &> /dev/null; then
 fi
 
 # Get clipboard history and let user select
-selection=$(cliphist list | rofi -dmenu -i -p "📋 Clipboard History" \
-    -theme ~/.config/rofi/themes/vague-clipboard.rasi)
+selection=$(cliphist list | rofi -dmenu -i -p " Clipboard History" \
+    -theme ~/.config/rofi/themes/tokyo-night-clipboard.rasi)
 
 # If user made a selection, copy it to clipboard
 if [[ -n "$selection" ]]; then
     echo "$selection" | cliphist decode | wl-copy
-    notify-send -t 2000 "📋 Clipboard" "Copied to clipboard"
+    notify-send -t 2000 "  Clipboard" "Copied to clipboard"
 fi
