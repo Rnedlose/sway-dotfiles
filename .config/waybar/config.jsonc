@@ -5,10 +5,11 @@
   "spacing": 0,
   "height": 30,
   "modules-left": [
-    "sway/workspaces",
+    "sway/workspaces"
+  ],
+  "modules-center": [
     "sway/window"
   ],
-  "modules-center": [],
   "modules-right": [
     "network",
     "bluetooth",
@@ -38,17 +39,30 @@
     "on-click": "alacritty --class=Impala -e impala"
   },
   "sway/workspaces": {
-    "format": "{name}",
+    "format": "{icon}",
+    "all-outputs": true,
+    "disable-scroll": true,
     "format-icons": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6",
-      "7": "7",
-      "8": "8",
-      "9": "9"
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "󰙯",
+      "5": "󱇤",
+      "6": "",
+      "7": "",
+      "8": "󰎞",
+      "9": ""
+    },
+    "persistent-workspaces": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": [],
+        "6": [],
+        "7": [],
+        "8": [],
+        "9": []
     }
   },
   "cpu": {
