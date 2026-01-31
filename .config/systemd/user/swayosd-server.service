@@ -1,0 +1,19 @@
+[Unit]
+Description=SwayOSD server
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+Type=simple
+# Force GTK to use Wayland
+Environment=GDK_BACKEND=wayland
+# Don’t start until the Wayland socket exists
+ExecStartPre=/usr/bin/sh -lc 'for i in $(seq 1 80); do [ -n "$WAYLAND_DISPLAY" ] && [ -S "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY" ] && exit 0; sleep 0.1; done; exit 1'
+# If something else already started it, don’t flap forever
+ExecStartPre=/usr/bin/sh -lc '! pgrep -x swayosd-server >/dev/null'
+ExecStart=/usr/bin/swayosd-server
+Restart=on-failure
+RestartSec=1
+
+[Install]
+WantedBy=default.target

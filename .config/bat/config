@@ -1,6 +1,6 @@
 # bat configuration file
 # Set the vague theme as default
---theme="vague"
+--theme="tokyonight_night"
 
 # Show line numbers
 --style="numbers,changes,header,grid"
